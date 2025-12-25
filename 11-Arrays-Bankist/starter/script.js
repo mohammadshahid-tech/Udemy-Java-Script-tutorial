@@ -61,16 +61,6 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-btnLogin.addEventListener('click', function userLogin(e) {
-   e.preventDefault();
-  const account = accounts.find(account => (account.owner.toLowerCase().split(' ').map(item=>item.slice(0,1)).join('') === inputLoginUsername.value && account.pin === Number(inputLoginPin.value)))
-  if (account) {
-    displayMovements(account.movements)
-    calculateBalance(account.movements)
-  }
-})
-
-
 
 
 /////////////////////////////////////////////////
@@ -94,7 +84,22 @@ containerMovements.innerHTML=''
 
 }
 
-// displayMovements(account1.movements)
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner.
+    toLowerCase()
+    .split(' ')
+    .map(name => name[0])
+    .join('')
+  })
+}
+
+
+
+
+
+
+displayMovements(account1.movements)
 // calculateBalance(account1.movements)
 
 function calculateBalance(movement){
@@ -124,6 +129,31 @@ const currencies = new Map([
 
 
 ////////////////////////////////////////////////////////
+
+// containerApp.style.opacity = 100;
+
+
+// btnTransfer.addEventListener('click',function(e){
+//   e.preventDefault();
+//   const transferTo = accounts.find(acc =>acc.owner.toLowerCase().split(' ').map(item=>item.slice(0,1)).join('')===  inputTransferTo.value) ;
+//  const transferAmount = Number(inputTransferAmount.value) ;
+// })
+
+// btnLogin.addEventListener('click', function userLogin(e) {
+//    e.preventDefault();
+
+//   const account = accounts.find(account => (account.owner.toLowerCase().split(' ').map(item=>item.slice(0,1)).join('') === inputLoginUsername.value && account.pin === Number(inputLoginPin.value)))
+//   if (account) {
+//     containerApp.style.opacity = 100;
+//     inputLoginUsername.value=''
+//     inputLoginPin.value=''
+//     labelWelcome.textContent=`Welcome Back (${account.owner})`
+//     displayMovements(account.movements)
+//     calculateBalance(account.movements)
+//   }else{
+//     alert('Enter Valid User name and Pin')
+//   }
+// })
 
 
 // const dollarInINr = 89.58;
